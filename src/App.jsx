@@ -1,10 +1,15 @@
 import React from 'react'
+import Navbir from './componants/Navbar'
+import Hero from './componants/Hero'
+import ReactRouter from './cofig/roter/ReactRouter'
 
 const App = () => {
   return (
-    <h1 className="text-3xl font-bold underline">
-    Hello world!
-  </h1>
+    <>
+    <ReactRouter/>
+    <Navbir />
+    <Hero/>
+    </>
   )
 }
 
