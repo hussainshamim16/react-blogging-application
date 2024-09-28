@@ -1,13 +1,80 @@
-
-
-
 @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400..900&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Lexend+Exa:wght@100..900&family=Orbitron:wght@400..900&display=swap');
-*{
+
+* {
     font-family: "Lexend Exa", sans-serif;
 }
 
-.blogerH1{
+.blogerH1 {
     font-family: "Orbitron", sans-serif;
     font-size: 7rem;
+}
+
+.hero {
+    /* border: 1px solid red; */
+    background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url(./assets/bg3.jpeg);
+
+}
+
+.Footer {
+    height: 50vh
+}
+
+.rander {
+    width: 30%;
+    /* margin-bottom: 20px; */
+}
+
+.terri {
+    display: flex;
+    justify-content: center;
+}
+.terri img{
+    width: 30%;
+
+}
+@media only screen and (max-width:500px) {
+    .blogerH1 {
+        font-size: 4rem;
+    }
+
+    .hero p {
+        font-size: 0.8em;
+    }
+
+    .buttons {
+        flex-direction: column;
+    }
+
+    .butu {
+        margin-bottom: 10px;
+    }
+
+    .todyTrend {
+        text-align: center;
+    }
+
+    .coverEr {
+        flex-direction: column;
+    }
+
+    .Footer {
+        /* border: 2px solid red; */
+        height: 60vh;
+    }
+
+    .rander {
+        width: 100%;
+        margin-bottom: 20px;
+    }
+    .terri {
+        display: flex;
+        flex-direction: column;
+        text-align: left;
+    }
+    .terri img{
+        width: 100%;
+        margin-bottom: 20px;
+        border-radius: 20px;
+    }
 }
