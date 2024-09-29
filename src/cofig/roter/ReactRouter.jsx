@@ -9,7 +9,7 @@ import About from '../../pages/About'
 import Blogs from '../../pages/Blogs'
 import Home from '../../pages/Home'
 
-const ReactRouter = () => {
+const ReactRouter = (exra) => {
   return (
     <BrowserRouter>
     <Routes>
