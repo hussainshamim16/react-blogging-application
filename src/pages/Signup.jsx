@@ -1,6 +1,7 @@
 import React from 'react'
 import { useNavigate } from 'react-router-dom'
 import Secondnavbir from '../componants/SecondNav'
+import Navbir from '../componants/Navbar'
 
 const Signup = () => {
     const subForm = () => {
@@ -10,7 +11,7 @@ const Signup = () => {
 
     return (
         <>
-            <Secondnavbir />
+            <Navbir />
             <div className='SecLogin'>
                 <div className="loginn d-flex align-items-center justify-content-center h-80 bg-warning flex-wrap w-50 py-5 px-3  rounded">
                     <form onSubmit={subForm} className='d-flex  flex-column gap-3'>

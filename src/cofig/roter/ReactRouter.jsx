@@ -10,6 +10,7 @@ import Blogs from '../../pages/Blogs'
 import Home from '../../pages/Home'
 import Login from '../../pages/login'
 import Signup from '../../pages/Signup'
+import Main from '../../pages/Main'
 
 const ReactRouter = (exra) => {
   return (
@@ -20,6 +21,7 @@ const ReactRouter = (exra) => {
         <Route path='blogs' element={<Blogs/>}/>
         <Route path='login' element={<Login/>}/>
         <Route path='signup' element={<Signup/>}/>
+        <Route path='main' element={<Main/>}/>
     </Routes>
     </BrowserRouter>
   )

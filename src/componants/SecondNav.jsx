@@ -13,9 +13,7 @@ function Secondnavbir() {
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
         <Navbar.Collapse id="basic-navbar-nav">
           <Nav className="ms-auto d-flex  align-items-center justify-content-around">
-            <Nav.Link as={Link} to="/">Home</Nav.Link>
-            <Nav.Link as={Link} to="/">Logout</Nav.Link>
-            <Nav.Link as={Link} to="/"><FaUserCircle className='fs-2' /></Nav.Link>
+            <Nav.Link as={Link} to="/signup">Signup</Nav.Link>
           </Nav>
         </Navbar.Collapse>
       </Container>
