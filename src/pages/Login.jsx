@@ -1,12 +1,33 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import Secondnavbir from '../componants/SecondNav'
 import Navbir from '../componants/Navbar'
+import { auth,signInWithEmailAndPassword } from '../cofig/firebase/firebase'
 
 const Login = () => {
-    const subForm = () => {
-        const navigater = useNavigate()
-        console.log("subForm")
+
+    const [Email, setemail] = useState('')
+    const [Password, setpassword] = useState('')
+
+    const email = (e) => { setemail(e.target.value) }
+    const password = (e) => { setpassword(e.target.value) }
+
+    // console.log(Email,Password)
+
+    const subForm = async (event) => {
+        try {
+            event.preventDefault()
+            const responce = await signInWithEmailAndPassword(auth, Email, Password)
+            localStorage.setItem("userId",responce.user.uid)
+            // console.log(responce.user.uid)
+            alert("sign in")
+
+        } catch (error) {
+            console.log("error", error.message);
+
+            alert(error.code)
+        }
+
     }
 
     return (
@@ -16,8 +37,8 @@ const Login = () => {
                 <div className="loginn d-flex align-items-center justify-content-center h-75 bg-warning flex-wrap w-50 py-3 px-2 rounded">
                     <form onSubmit={subForm} className='d-flex  flex-column gap-3'>
                         <h1>Login Blogzer</h1>
-                        <input type='email' placeholder='Enter your email' required className='px-3 py-1' />
-                        <input type="password" placeholder='Enter your password' required className='px-3 py-1' />
+                        <input type='email' placeholder='Enter your email' required className='px-3 py-1' onChange={email} />
+                        <input type="password" placeholder='Enter your password' required className='px-3 py-1' onChange={password} />
                         <button type="submit" className='py-2 bg-dark text-white border rounded-1'>Login</button>
                         <p>if you have not registed <a href="#" className='text-white'>sign up</a></p>
                     </form>

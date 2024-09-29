@@ -2,20 +2,57 @@ import React, { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import Secondnavbir from '../componants/SecondNav'
 import Navbir from '../componants/Navbar'
+import {
+    app,
+    auth,
+    getAuth,
+    createUserWithEmailAndPassword,
+    signInWithEmailAndPassword,
+} from '../cofig/firebase/firebase'
 
 const Signup = () => {
 
-    let{name,setName}=useState('')
-    let{number,setNumber}=useState()
-    let{email,setEmail}=useState('')
-    let{password,setPassword}=useState('')
-    let{image,imageSelected}=useState()
+    let [namer, setName] = useState('')
+    let [number, setNumber] = useState(null)
+    let [mailer, setEmail] = useState('')
+    let [password, setPassword] = useState('')
+    let [image, imageSelected] = useState(null)
 
-    console.log(name,number,email,password)
+    // use
+    // console.log(namer)
 
-    const subForm = (event) => {
-        console.log("subForm")
-        event.preventDefault()
+    // console.log(name,number,email,password)
+
+    const name = (event) => { setName(event.target.value) }
+    const phone = (event) => { setNumber(event.target.value) }
+    const email = (event) => { setEmail(event.target.value) }
+    const pawwsord = (event) => { setPassword(event.target.value) }
+    const images = (event) => { imageSelected(event.target.files[0]) }
+
+
+
+    const subForm = async (event) => {
+
+        try {
+            event.preventDefault()
+            const obj = {
+                name: namer,
+                number: number,
+                Email: mailer,
+                password: password,
+                profile: image,
+            }
+            const responce = await createUserWithEmailAndPassword(auth, mailer, password)
+            localStorage.setItem("userId",responce.user.uid)
+            alert("signup done")
+
+        } catch (error) {
+            console.log(error.message)
+            alert(error.code)
+        }
+
+
+       
     }
 
     return (
@@ -23,13 +60,13 @@ const Signup = () => {
             <Navbir />
             <div className='SecLogin'>
                 <div className="loginn d-flex align-items-center  justify-content-center h-80 bg-warning flex-wrap  py-5 px-3   rounded">
-                    <form onSubmit={()=>subForm(event)} className='d-flex  flex-column gap-3'>
+                    <form onSubmit={() => subForm(event)} className='d-flex  flex-column gap-3'>
                         <h1>Signup Blogzer</h1>
-                        <input type='text' placeholder='FULL NAME'  className='px-3 py-1' onChange={(e)=> setName(e.target.value)}/>
-                        <input type='number' placeholder='PHONE'  className='px-3 py-1' onChange={(e)=> setNumber(e.target.value)}/>
-                        <input type='email' placeholder='EMAIL'  className='px-3 py-1' onChange={(e)=> setEmail(e.target.value)}/>
-                        <input type='password' placeholder='PASSWORD'  className='px-3 py-1' onChange={(e)=> setPassword(e.target.value)}/>
-                        <input type="file" accept='image/*'   className='px-3 py-1' onSelect={(e)=> imageSelected()} />
+                        <input type='text' placeholder='FULL NAME' className='px-3 py-1' onChange={() => name(event)} />
+                        <input type='number' placeholder='PHONE' className='px-3 py-1' onChange={() => phone(event)} />
+                        <input type='email' placeholder='EMAIL' className='px-3 py-1' onChange={() => email(event)} />
+                        <input type='password' placeholder='PASSWORD' className='px-3 py-1' onChange={() => pawwsord(event)} />
+                        <input type="file" accept='image/*' className='px-3 py-1' onChange={() => images(event)} />
                         <button type="submit" className='py-2 bg-dark text-white border rounded-1'>signup</button>
                         <p>if you have already Account <a href="#" className='text-white'>Login</a></p>
                     </form>
