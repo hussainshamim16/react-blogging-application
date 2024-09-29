@@ -10,8 +10,10 @@ const blogs = () => {
     <div>
       <Secondnavbir exra="blogs" />
       <div className="creater mt-5 ms-5 mt-4">
-        <h1 className='mb-3'>Build your community, start a Blog</h1>
-        <button className="newBlog d-flex align-items-center  bg-warning px-5 py-3 rounded-5 w-50 w-md-100">
+        <h1 className='mb-3 text-center w-75'>The best blogging platform for developers and teams.</h1>
+        <button className="newBlog d-flex align-items-center  bg-warning px-5 py-3 rounded-5 w-50 w-md-100"
+        
+        >
           <MdCreateNewFolder className='fs-1 me-1' />
           Add Blog
         </button>

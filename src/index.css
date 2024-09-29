@@ -33,6 +33,31 @@
     width: 30%;
 
 }
+
+.SecLogin{
+    /* background-color: red; */
+    height: 90vh;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0px 80px;
+}
+.user-Rev{
+    width: 10%;
+}
+.creater{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+.creater h1{
+    font-size: 4rem;
+    text-transform: capitalize;
+    font-weight: 800;
+}
+
+
 @media only screen and (max-width:500px) {
     .blogerH1 {
         font-size: 4rem;

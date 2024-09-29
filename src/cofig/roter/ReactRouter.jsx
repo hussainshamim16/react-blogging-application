@@ -8,6 +8,8 @@ import { BrowserRouter ,Routes,Route} from 'react-router-dom'
 import About from '../../pages/About'
 import Blogs from '../../pages/Blogs'
 import Home from '../../pages/Home'
+import Login from '../../pages/login'
+import Signup from '../../pages/Signup'
 
 const ReactRouter = (exra) => {
   return (
@@ -16,6 +18,8 @@ const ReactRouter = (exra) => {
         <Route path='/' element={<Home/>}/>
         <Route path='about' element={<About/>}/>
         <Route path='blogs' element={<Blogs/>}/>
+        <Route path='login' element={<Login/>}/>
+        <Route path='signup' element={<Signup/>}/>
     </Routes>
     </BrowserRouter>
   )
