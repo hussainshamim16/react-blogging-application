@@ -13,7 +13,7 @@ function Navbir() {
         <Navbar.Collapse id="basic-navbar-nav">
           <Nav className="ms-auto">
             <Nav.Link as={Link} to="/">Home</Nav.Link>
-            <Nav.Link as={Link} to="about">About</Nav.Link>
+            <Nav.Link as={Link} to="about">Profile</Nav.Link>
             <Nav.Link as={Link} to="blogs">Blogs</Nav.Link>
             <Nav.Link as={Link} to="login">Login</Nav.Link>
             <Nav.Link as={Link} to="signup">Signup</Nav.Link>
