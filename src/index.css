@@ -56,7 +56,9 @@
     text-transform: capitalize;
     font-weight: 800;
 }
-
+.loginn{
+    width: 50%;
+}
 
 @media only screen and (max-width:500px) {
     .blogerH1 {
@@ -101,5 +103,15 @@
         width: 100%;
         margin-bottom: 20px;
         border-radius: 20px;
+    }
+    .SecLogin{
+        /* background-color: red; */
+        height: 90vh;
+        flex-direction: column;
+    }
+    .loginn{
+        margin-top: 10%;
+        margin-bottom: 10%;
+        width: 150%;
     }
 }
