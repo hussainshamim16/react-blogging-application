@@ -9,7 +9,7 @@ function Secondnavbir() {
   return (
     <Navbar expand="lg" className="bg-warning py-3" >
       <Container>
-        <Navbar.Brand as={Link} to="/">React-Bootstrap</Navbar.Brand>
+        <Navbar.Brand as={Link} to="/">Blogzer</Navbar.Brand>
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
         <Navbar.Collapse id="basic-navbar-nav">
           <Nav className="ms-auto d-flex  align-items-center justify-content-around">

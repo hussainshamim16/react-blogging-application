@@ -8,7 +8,7 @@ import { BrowserRouter ,Routes,Route} from 'react-router-dom'
 import About from '../../pages/About'
 import Blogs from '../../pages/Blogs'
 import Home from '../../pages/Home'
-import Login from '../../pages/login'
+import Login from '../../pages/Login'
 import Signup from '../../pages/Signup'
 import Main from '../../pages/Main'
 

@@ -1,43 +1,69 @@
-import React from 'react';
-import { FaEdit } from "react-icons/fa";
-import Navbir from '../componants/Navbar'
-import SecCard from '../componants/secondCard'
+import React, { useEffect, useState } from 'react';
+import { useNavigate } from 'react-router-dom';
+import { getAuth } from 'firebase/auth';
+import { getFirestore, doc, getDoc } from 'firebase/firestore';
+import Navbir from '../componants/Navbar';
 
-const ProfileSection = () => {
+const Profile = () => {
+  const [userData, setUserData] = useState(null);
+  console.log(userData)
+  const navigate = useNavigate();
+  const auth = getAuth();
+  const firestore = getFirestore();
+
+  useEffect(() => {
+    // Check if user is logged in
+    const userId = localStorage.getItem('userId');
+    if (!userId) {
+      navigate('/login');
+    } else {
+      // Fetch user data from Firestore
+      const getUserData = async () => {
+        try {
+          const userDoc = await getDoc(doc(firestore, 'users', userId));
+          if (userDoc.exists()) {
+            setUserData(userDoc.data());
+          } else {
+            alert('No such user data found!');
+          }
+        } catch (error) {
+          console.log('Error fetching user data: ', error.message);
+        }
+      };
+
+      getUserData();
+    }
+  }, [firestore, navigate]);
+
   return (
     <>
       <Navbir />
-      <div className="profiler d-flex justify-content-around align-items-center mt-5">
-        <div className="imageSection">
-          <img
-            src="https://img.freepik.com/premium-photo/stylish-man-flat-vector-profile-picture-ai-generated_606187-310.jpg"
-            alt="Profile"
-            className="rounded-circle"
-            width="150"
-            height="150"
-          />
-        </div>
-        <div className="content ">
-   
-            <h3 className="mb-1">John Doe</h3>
-            <p className="mb-2 text-muted">johndoe@example.com</p>
-            <p><strong>phone: </strong>03160578265</p>
-            <p><strong>Member Since: </strong>January 2023</p>
-
-            {/* Edit Profile Button */}
-            <button className="btn btn-primary d-flex align-items-center mt-3">
-              <FaEdit className="me-1" /> Edit Profile
-            </button>
-         
-        </div>
-      </div>
-      <hr />
-      <div className="todyTrend">
-        <h1 className="mx-4 text-center">Your Blogs</h1>
-        <SecCard />
+      <div className='profile-page'>
+        {userData ? (
+          <div className='profile-card bg-light p-4 rounded'>
+            <h2 className='text-center mb-4'>User Profile</h2>
+            <div className='text-center'>
+              <img
+                src={userData.profileImage}
+                alt='User Profile'
+                className='profile-image rounded-circle'
+                style={{ width: '150px', height: '150px' }}
+              />
+            </div>
+            <div className='mt-4'>
+              <h5><strong>Name:</strong> {userData.name}</h5>
+              <h5><strong>Email:</strong> {userData.email}</h5>
+              <h5><strong>Phone:</strong> {userData.number}</h5>
+            </div>
+          </div>
+        ) : (
+          <div className='text-center'>
+            <h3>Loading user data...</h3>
+          </div>
+        )}
       </div>
     </>
   );
 };
 
-export default ProfileSection;
+export default Profile;
